@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "time.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "score.h": "c",
+        "__bit_reference": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "unordered_map": "c",
+        "typeinfo": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
