@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h> 
 #include <string.h> 
-#include "lab7_h.h"
+#include "main.h"
 
 int main(void){
     Person *s[20];
