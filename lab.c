@@ -121,14 +121,30 @@ void searchName(Person **s, int count){
     if(scnt == 0) printf("=> 검색된데이터없음!");
     printf("\n");
 };
+int idcheck(){
+    int input;
+
+    while(1){
+        printf("\n당신의 학번을 입력해주세요: ");
+        scanf("%d",&input);
+        if(input >= 11111111 && input <= 24000000){
+            break;
+        }
+        else{
+            printf("학번이 맞지 않습니다. 다시 입력하시길 바랍니다.\n ");
+    }
+}
+    return input;
+}
+
 
 int selectMenu(){
     int menu;
-    printf("\n*** ^o^ 당신의 진짜 사랑을 찾아보세요 ^o^ ***\n");
-    printf("1. 이상형 조회\n");
-    printf("2. 이상형 추가\n");
-    printf("3. 이상형 수정\n");
-    printf("4. 이상형 삭제\n");
+    printf("\n*** FOOTBALL CHECK SYSTEM ***\n");
+    printf("1. 경기장 조회\n");
+    printf("2. 경기장 예약\n");
+    printf("3. 예약 수정\n");
+    printf("4. 예약 삭제\n");
     printf("5. 파일저장\n");
     printf("6. 이름검색\n");
     printf("0. 종료\n\n");

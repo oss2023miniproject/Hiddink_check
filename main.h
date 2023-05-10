@@ -16,3 +16,4 @@ int selectdatano (Person *s[], int count);
 int deleteproduct(Person *s);
 void searchName(Person **s, int count);
 int selectMenu();
+int idcheck();

@@ -9,8 +9,7 @@ int main(void){
     int count = 0, menu;
     int index =0;
     count = loadData(s);
-    index =count;
-    
+    int id = idcheck();
     while (1){
         menu = selectMenu();
         if (menu == 0) break;
