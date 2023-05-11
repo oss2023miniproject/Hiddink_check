@@ -6,7 +6,7 @@
 
 void saveData(Person **s, int count){
     FILE *fp;
-    fp = fopen("findlove.txt", "wt");
+    fp = fopen("Chekc.txt", "wt");
     for(int i=0; i<count; i++){
         if(s[i]->age==-1) continue;
     fprintf(fp, "%s %d %0.1f %0.1f %s \n",s[i]->name,s[i]->age,s[i]->length,s[i]->weight,s[i]->detail);
@@ -18,7 +18,7 @@ void saveData(Person **s, int count){
 int loadData(Person **s){
     int count =0;
     FILE *fp;
-    fp=fopen("findlove.txt", "rt");
+    fp=fopen("Chekc.txt", "rt");
     if(fp==NULL){
         printf("=> 파일 없음");
     }
