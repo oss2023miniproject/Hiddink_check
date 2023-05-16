@@ -69,3 +69,38 @@ void teamfillmethod(Team **t){ //team의 사이즈를 먼저 늘리기 이유 : 
         t[i]->starttime = 1004; //stattime에 시간을 초기화 시키는 것이다.
     }
 }
+
+void printeachTeam(Team *t){
+    printf("%d시부터 %d시까지 예약한 팀: %s이고,예약한 사람: %s이다.\n",t->starttime,t->endtime,t->teamname,t->name);
+}
+
+void printTeam(Team **t){
+    printf("예약한 팀을 보여드리겠습니다.\n");
+    printf("------------------------------------------\n\n");
+    for(int i=0; i<24; i++){
+        if(t[i]->starttime == 1004) printf("%d시부터 %d시까지 예약한 팀은 없습니다!!!",i,i+1);
+        else printeachTeam(t[i]);
+    }
+}
+
+void deleteTeam(Team **t,char a[]){
+    int check;
+    printf("정말 취소하시겠습니까?(YES: 1, No: 2) ");
+    scanf("%d",&check);
+
+    if(check == 1){
+        int count=0;
+        for(int i=0; i<24; i++){
+            if(!strcmp(t[i]->name,a)){
+                t[i]->starttime = 1004;
+                count++;
+                strcpy(t[i]->name,"");
+                strcpy(t[i]->teamname,"");
+                printf("삭제되었습니다.\n\n");
+                printf("%[^\n]s",t[i]->teamname);
+            } 
+        }
+
+        if(count == 0) printf("리더의 이름과 같은 팀은 없습니다.\n");
+    }
+}
