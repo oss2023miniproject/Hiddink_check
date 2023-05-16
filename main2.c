@@ -6,10 +6,14 @@
 
 int main(void){
     Person *s[20];
+    Team *a[24];
+    int a_index=0;
+    int a_count=0;
     int selectnumber;
     int count = 0, menu;
     int index =0;
     int id = idcheck();
+    teamfillmethod(a);
     printf("평봉필드 이용 : 1\n히딩크 잔디 이용 : 2");
     scanf("%d",&selectnumber);
     count = loadData(s,selectnumber);
@@ -49,6 +53,9 @@ int main(void){
         }
         else if (menu == 6){
             searchName(s,index);
+        }
+        else if (menu == 7){
+            reserveSystem(a);
         }
     }
     printf("종료됨!\n");

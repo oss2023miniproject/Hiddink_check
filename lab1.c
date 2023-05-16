@@ -4,6 +4,7 @@
 #include <string.h> 
 #include "main.h" 
 
+
 void saveData(Person **s, int count,int selectnumber){
     FILE *fp;
     if(selectnumber == 1) fp = fopen("poengbong.txt", "wt");
@@ -41,8 +42,104 @@ int loadData(Person **s, int selectnumber){
     
     return count;
 }
+int reserveTime(Team *t[]){ //이것은 적절한 시간으로 빌렸는지 확인하는 함수입니다.
+    int startTime;
+    int endTime;
+    int count=0;
+    while(1){
+        printf("빌리고 싶은 시작 시간를 입력하세요(오후 5시는 17시로 입력!) : ");
+        scanf("%d",&startTime);
+        printf("\n끝나는 시간을 입력하세요(오후 6시는 18시로 입력!) : ");
+        scanf("%d",&endTime);
 
+        if(t[startTime]->starttime == startTime) printf("\n그 시간엔 이미 사용자가 있습니다.\n");
+        else if(endTime - startTime  == 1) {
+            t[startTime]->starttime = startTime;//t[start]에 넣은 것은 예약한 사람을 확인하는데 시간별로 확인하기 위해서 이렇게 사용했습니다.
+            t[startTime]->endtime = endTime; 
+            break;
+        }
+        else printf("\n빌리는 시간이 적절하지 않습니다. 다시 입력해주세요!\n");
+    }
+    return startTime;    
+}
 
+void reserveteamName(Team *t[],int time){ //team의 이름과 리더를 찾는 함수이다.
+    char teamName[100];
+    char teamLeader[100];
+    getchar();
+    printf("\n빌리는 팀 이름을 입력해주세요! : ");
+    scanf("%[^\n]s",teamName);
+    printf("\n대표자의 이름을 입력해주세요! : ");
+    getchar();
+    scanf("%[^\n]s",teamLeader);
+
+    for(int i=0; i<24; i++){
+        if(!strcmp(teamName,t[i]->teamname)) {
+            printf("\n이미 빌린 팀입니다.\n");
+            t[time]->starttime = 0;
+            t[time]->endtime = 0;
+            printf("자동적으로 예약시스템이 취소 후 종료됩니다.\n");
+            return;
+        }
+        if(!strcmp(teamLeader,t[i]->name)) {
+            printf("\n이미 빌린 사람입니다.\n");
+            t[time]->starttime = 0;
+            t[time]->endtime = 0;
+            printf("자동적으로 예약시스템이 취소 후 종료됩니다.\n");
+            return;
+        }
+
+    }
+    strcpy(t[time]->teamname,teamName);
+    strcpy(t[time]->name,teamLeader);    
+}
+
+void reserveSystem(Team **t){//위에 두 함수를 호출해서 사람을 받는다.
+    int number = reserveTime(t);
+    reserveteamName(t,number);
+}
+
+void teamfillmethod(Team **t){ //team의 사이즈를 먼저 늘리기 이유 : 예약을 조회할 때 nullptr이라면 그 시간은 비어있다고 생각
+    for(int i=0; i<24; i++){
+        t[i] = (Team*)malloc(sizeof(Team));
+        t[i]->starttime = 1004; //stattime에 시간을 초기화 시키는 것이다.
+    }
+}
+
+void printeachTeam(Team *t){
+    printf("%d시부터 %d시까지 예약한 팀: %s이고, 예약한 사람: %s이다.\n",t->starttime,t->endtime,t->teamname,t->name);
+}
+
+void printTeam(Team **t){
+    printf("예약한 팀을 보여드리겠습니다.\n");
+    printf("------------------------------------------\n\n");
+    for(int i=0; i<24; i++){
+        if(t[i]->starttime == 1004) printf("%d시부터 %d시까지 예약한 팀은 없습니다!!!\n",i,i+1);
+        else printeachTeam(t[i]);
+    }
+}
+
+void deleteTeam(Team **t,char a[]){
+    int check;
+    printf("정말 삭제하시겠습니까?(YES: 1, No: 2) ");
+    scanf("%d",&check);
+
+    if(check == 1){
+        int count=0;
+        for(int i=0; i<24; i++){
+            if(!strcmp(t[i]->name,a)){
+                t[i]->starttime = 1004;
+                count++;
+                strcpy(t[i]->name,"");
+                strcpy(t[i]->teamname,"");
+                printf("삭제되었습니다.\n\n");
+                printf("%[^\n]s",t[i]->teamname);
+            } 
+        }
+
+        if(count == 0) printf("리더의 이름과 같은 팀은 없습니다.\n");
+    }
+}
 
 int createProduct(Person *s){
     printf("이름은 ? ");
@@ -149,6 +246,9 @@ int selectMenu(){
     printf("4. 예약 삭제\n");
     printf("5. 파일저장\n");
     printf("6. 이름검색\n");
+    printf("7. 현재 경기장 예약 현황 조회\n");
+    printf("8. 팀으로 예약하기\n");
+    printf("9. 팀 예약취소하기\n");
     printf("0. 종료\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
