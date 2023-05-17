@@ -104,3 +104,37 @@ void deleteTeam(Team **t,char a[]){
         if(count == 0) printf("리더의 이름과 같은 팀은 없습니다.\n");
     }
 }
+
+void saveTeamReserve(Team **t,int selectnumber){
+    FILE *fp;
+    if(selectnumber == 1) fp = fopen("poengbongTeam.txt", "wt");
+    else fp = fopen("hidinkTeam.txt","wt");
+    for(int i=0; i<24; i++){
+        if(t[i]->starttime != 1024)
+        fprintf(fp,"%d %s\n %s",t[i]->starttime,t[i]->teamname,t[i]->name);
+    }
+    fclose(fp);
+    printf("=> 저장됨! ");
+}
+
+void loadTeamReserve(Team **s, int selectnumber){
+    FILE *fp;
+    int index;
+    if(selectnumber == 1) fp=fopen("poengbongTeam.txt", "rt");
+    else fp = fopen("hidinkTeam.txt","rt");
+    if(fp==NULL){
+        printf("=> 파일 없음");
+    }
+    else{
+        while(!feof(fp)){
+        fscanf(fp, "%d",&index);
+        if(feof(fp)) break;
+        s[index]->starttime = index;
+        s[index]->endtime = index+1;
+        fscanf(fp, "%[^\n]s",s[index]->teamname);
+        fscanf(fp, "%[^\n]s",s[index]->name);
+    }
+    fclose(fp);
+    printf("=> 로딩성공!\n");
+    }
+}
