@@ -7,6 +7,7 @@
 int main(void){
     Person *s[20];
     Team *a[24];
+    char y[100];//팀의 리더의 이름을 받는 변수,삭제시킬 때 필요.
     int a_index=0;
     int a_count=0;
     int selectnumber;
@@ -17,7 +18,7 @@ int main(void){
     printf("평봉필드 이용 : 1\n히딩크 잔디 이용 : 2");
     scanf("%d",&selectnumber);
     count = loadData(s,selectnumber);
-    while (1){
+    while (1){//1->인원찾기(기능) 2->팀 예약 3->다른 팀 찾기
         menu = selectMenu();
         if (menu == 0) break;
         if (menu == 1){
@@ -55,7 +56,17 @@ int main(void){
             searchName(s,index);
         }
         else if (menu == 7){
+            printTeam(a);
+        }
+        else if (menu == 8){
             reserveSystem(a);
+        }
+
+        else if(menu == 9){
+            printf("취소하실 팀의 리더의 이름을 입력해주세요! : ");
+            getchar();
+            scanf("%[^\n]s",y);
+            deleteTeam(a,y);
         }
     }
     printf("종료됨!\n");
