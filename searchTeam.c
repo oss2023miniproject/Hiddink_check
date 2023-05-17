@@ -3,7 +3,10 @@
 #include <time.h> 
 #include <string.h> 
 #include "main.h" 
-
+int checkid(int studentnumber,int checknumber){//내용을 지우거나 삭제하거나 추가하는데 자신인지를 확인하는 함수.
+    if(studentnumber == checknumber) return 1;
+    else return 0;
+}
 void inputPhonenumber(Search **q,int index){//팀의 대표의 전화번호를 집어넣는 함수이다.
     char number[8];
     int check =0;
@@ -65,4 +68,48 @@ int inputSearchInformation(Search **q,int index,int studentnumber){//add하는 �
     inputInformation(q,index);
     inputPhonenumber(q,index);
     return index++;
+}
+
+void updateInformation(Search **q,int studentnumber){
+    int index;
+    int point;
+    printf("고칠 번호를 적어주세요 : ");
+    scanf("%d",&index);
+
+    if(checkid(q[index]->student,studentnumber) == 1){
+        printf("사용자가 다릅니다.\n\n");
+        return;
+    }
+
+    printf("무엇을 고칠까요?\n1. 전화번호\n2. 팀의정보\n3.둘다 : ");
+    scanf("%d",point);
+
+    switch(point){
+        case 1:
+            inputPhonenumber(q,index);
+            break;
+        case 2:
+            inputInformation(q,index);
+            break;
+        default:
+            inputPhonenumber(q,index);
+            inputInformation(q,index);
+            break;
+    }
+
+    printf("수정했습니다.\n\n");
+}
+
+void deleteInformation(Search **q,int studentnumber){
+    int index;
+    printf("삭제할 번호를 적어주세요 : ");
+    scanf("%d",&index);
+    
+    if(checkid(q[index]->student,studentnumber) == 1){
+        printf("사용자가 다릅니다.\n\n");
+        return;
+    }
+
+    q[index]->start = -1;
+    printf("삭제했습니다.");
 }
