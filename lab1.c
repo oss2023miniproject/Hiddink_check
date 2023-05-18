@@ -10,8 +10,8 @@ void saveData(Person **s, int count,int selectnumber){
     if(selectnumber == 1) fp = fopen("poengbong.txt", "wt");
     else fp = fopen("hidink.txt","rt");
     for(int i=0; i<count; i++){
-        if(s[i]->age==-1) continue;
-    fprintf(fp, "%s %d %0.1f %0.1f %s \n",s[i]->name,s[i]->age,s[i]->length,s[i]->weight,s[i]->detail);
+        if(s[i]->countnumber==-1) continue;
+    // fprintf(fp, "%s %d %0.1f %0.1f %s \n",s[i]->name,s[i]->age,s[i]->length,s[i]->weight,s[i]->detail);
     }
     fclose(fp);
     printf("=> 저장됨! ");
@@ -30,10 +30,10 @@ int loadData(Person **s, int selectnumber){
         s[count]=(Person *)malloc(sizeof(Person));
         fscanf(fp, "%s", s[count]->name);
         if(feof(fp)) break;
-        fscanf(fp, "%d", &s[count]->age);
-        fscanf(fp, "%lf", &s[count]->length);
-        fscanf(fp, "%lf", &s[count]->weight);
-        fscanf(fp, "%[^\n]s", s[count]->detail);
+        // fscanf(fp, "%d", &s[count]->age);
+        // fscanf(fp, "%lf", &s[count]->length);
+        // fscanf(fp, "%lf", &s[count]->weight);
+        // fscanf(fp, "%[^\n]s", s[count]->detail);
         count++;
     }
     fclose(fp);
@@ -42,15 +42,39 @@ int loadData(Person **s, int selectnumber){
     
     return count;
 }
+
 int reserveTime(Team *t[]){ //이것은 적절한 시간으로 빌렸는지 확인하는 함수입니다.
+    char input;
+    char input2;
+    int starttime[1];
+    int endtime[1];
+
     int startTime;
     int endTime;
     int count=0;
+    int check=0;
+
     while(1){
-        printf("빌리고 싶은 시작 시간를 입력하세요(오후 5시는 17시로 입력!) : ");
-        scanf("%d",&startTime);
+   
+            printf("빌리고 싶은 시작 시간를 입력하세요(오후 5시는 17시로 입력!) : ");
+            scanf("%s",&input);
+            char *ptr = strtok(&input, ":");      // " " 공백 문자를 기준으로 문자열을 자름, 포인터 반환
+            check=0;
+            while (ptr != NULL){     
+                starttime[check]= atoi(ptr);        //문자열 자르기 
+                ptr = strtok(NULL, " "); 
+                check++;     
+        }
+           
         printf("\n끝나는 시간을 입력하세요(오후 6시는 18시로 입력!) : ");
-        scanf("%d",&endTime);
+        scanf("%s",&input);
+        char *ptr2 = strtok(&input, ":");      // " " 공백 문자를 기준으로 문자열을 자름, 포인터 반환
+        check=0;
+        while (ptr != NULL){     
+            endtime[check]= atoi(ptr2);        //문자열 자르기 
+            ptr = strtok(NULL, " "); 
+            check++;     
+        }
 
         if(t[startTime]->starttime == startTime) printf("\n그 시간엔 이미 사용자가 있습니다.\n");
         else if(endTime - startTime  == 1) {
@@ -94,15 +118,15 @@ void reserveteamName(Team *t[],int time){ //team의 이름과 리더를 찾는 �
     strcpy(t[time]->name,teamLeader);    
 }
 
-void reserveSystem(Team **t){//위에 두 함수를 호출해서 사람을 받는다.
+void reserveSystem(Team **t){
     int number = reserveTime(t);
     reserveteamName(t,number);
 }
 
-void teamfillmethod(Team **t){ //team의 사이즈를 먼저 늘리기 이유 : 예약을 조회할 때 nullptr이라면 그 시간은 비어있다고 생각
+void teamfillmethod(Team **t){ 
     for(int i=0; i<24; i++){
         t[i] = (Team*)malloc(sizeof(Team));
-        t[i]->starttime = 1004; //stattime에 시간을 초기화 시키는 것이다.
+        t[i]->starttime = 1004; 
     }
 }
 
@@ -112,9 +136,10 @@ void printeachTeam(Team *t){
 
 void printTeam(Team **t){
     printf("예약한 팀을 보여드리겠습니다.\n");
-    printf("------------------------------------------\n\n");
+    printf("---------------------------------------------\n\n");
+    printf(" 대여시간 |     팀이름     |  대표자 | 인원 |추가사항                \n");
     for(int i=0; i<24; i++){
-        if(t[i]->starttime == 1004) printf("%d시부터 %d시까지 예약한 팀은 없습니다!!!\n",i,i+1);
+        if(t[i]->starttime == 1004) printf("%d시~%d시 | \n",i,i+1);
         else printeachTeam(t[i]);
     }
 }
@@ -133,7 +158,6 @@ void deleteTeam(Team **t,char a[]){
                 strcpy(t[i]->name,"");
                 strcpy(t[i]->teamname,"");
                 printf("삭제되었습니다.\n\n");
-                printf("%[^\n]s",t[i]->teamname);
             } 
         }
 
@@ -141,49 +165,86 @@ void deleteTeam(Team **t,char a[]){
     }
 }
 
-int createProduct(Person *s){
-    printf("이름은 ? ");
-    scanf("%s",s->name);
-    printf("현재 나이 ? ");
-    scanf("%d",&s->age);
-    printf("현재 신장은 ? ");
-    scanf("%lf",&s->length);
-    printf("몸무게는 ? ");
-    scanf("%lf",&s->weight);
-    printf("특이사항은 ? ");
+int createProduct(Person *s, int studentnumber){
+    printf("어느 경기장을 대여하시겠습니까?(평봉:0 히딩크:1 )");
+    scanf("%d",&s->playground);
+    if(s->playground !=1||s->playground !=0){
+        printf("다시 입력하세요");
+        scanf("%d",&s->playground);
+    }
+    printf("팀이름은 ? ");
     getchar();
-    scanf("%[^\n]s", s->detail);
+    scanf("%[^\n]s", s->teamname);
+
+    printf("팀 인원은? ");
+    scanf("%d",&s->countnumber);
+
+    printf("대표자 성함은? ");
+    getchar();
+    scanf("%[^\n]s", s->name);
     printf("=> 추가됨! \n");
+    s->studentnumber = studentnumber;
+
+
+    // scanf("%s",s->name);
+    // printf("현재 나이 ? ");
+    // scanf("%d",&s->age);
+    // printf("현재 신장은 ? ");
+    // scanf("%lf",&s->length);
+    // printf("몸무게는 ? ");
+    // scanf("%lf",&s->weight);
+    
     return 0;
 };
 
 void readProduct(Person *s){
-    printf("  이름: %4s\n  나이: %d\n  신장: %0.1f\n  몸무게: %0.1f\n  특이사항: %s \n",s->name,s->age,s->length,s->weight,s->detail);
+    printf("대표자: %10s\n  인원: %d\n 팀대표: %s \n",s->teamname,s->countnumber,s->name);
 };
 
 void listproduct(Person *s[], int count){
-    printf("^o^ 두근두근 당신의 이상형을 찾아보세요 ^o^ \n");
+    printf("check the playground\n");    //수정하자
     printf("===========================\n");
     for(int i=0; i<count; i++){
-        if(s[i]->age ==-1) continue;
-        printf("%2d번 이상형^o^\n",i+1);
+        if(s[i]->countnumber ==-1) continue;
+        printf("경기장 예약자\n",i+1);
         readProduct(s[i]);
     }
     printf("\n");
 };
 
-int updateProduct(Person *s){
-    printf("이름은 ? ");
-    scanf("%s",s->name);
-    printf("현재 나이 ? ");
-    scanf("%d",&s->age);
-    printf("현재 신장은 ? ");
-    scanf("%lf",&s->length);
-    printf("몸무게는 ? ");
-    scanf("%lf",&s->weight);
-    printf("특이사항은? ");
+int updateProduct(Person *s, int studentnumber){
+    printf("어느 경기장을 대여하시겠습니까?(평봉:0 히딩크:1 )");
+    scanf("%d",&s->playground);
+    if(s->playground !=1||s->playground !=0){
+        printf("다시 입력하세요");
+        scanf("%d",&s->playground);
+    }
+    printf("팀이름은 ? ");
     getchar();
-    scanf("%[^\n]s", s->detail);
+    scanf("%[^\n]s", s->teamname);
+
+    printf("팀 인원은? ");
+    scanf("%d",&s->countnumber);
+
+    printf("대표자 성함은? ");
+    getchar();
+    scanf("%[^\n]s", s->name);
+    printf("=> 추가됨! \n");
+    s->studentnumber = studentnumber;
+
+
+
+    // printf("이름은 ? ");
+    // scanf("%s",s->name);
+    // printf("현재 나이 ? ");
+    // scanf("%d",&s->age);
+    // printf("현재 신장은 ? ");
+    // scanf("%lf",&s->length);
+    // printf("몸무게는 ? ");
+    // scanf("%lf",&s->weight);
+    // printf("특이사항은? ");
+    // getchar();
+    // scanf("%[^\n]s", s->detail);
     printf("=> 수정되었습니다.! \n");
     return 0;
 };
@@ -196,9 +257,15 @@ int selectdatano (Person *s[], int count){
     return no;
 }
 
-int deleteproduct(Person *s){
-    s->age=-1;
+int deleteproduct(Person *s, int studentnumber){
+    if(studentnumber!= s->studentnumber){
+        printf("알맞지 않은 학번입니다.");
+    }
+    else{
+ s->countnumber=-1;
     printf("=> 삭제됨! \n");
+    }
+   
     return 0;
 };
 
@@ -210,7 +277,7 @@ void searchName(Person **s, int count){
     printf("^o^ 두근두근 당신의 이상형을 찾아보세요 ^o^ \n");
     printf("================================\n");
     for(int i=0;i<count;i++){
-        if(s[i]->age==-1) continue;
+        if(s[i]->countnumber==-1) continue;
         if(strstr(s[i]->name,search)){
             printf("%2d ", i+1);
             readProduct(s[i]);
