@@ -4,8 +4,7 @@ style="width:100px; height:100px;"
 
 
 
-![E416BF70-4743-4AA8-92C7-2EC39FCC65C1_4_5005_c](https://github.com/oss2023miniproject/Hiddink_check/assets/82189651/c3e689be-7a55-44e1-a37b-3fc8408e60a0)
-style="width:100px; height:100px;"
+
 -----------------------
  
 
@@ -54,7 +53,8 @@ style="width:100px; height:100px;"
 
 # 팀원
 김영규
-![image](https://github.com/oss2023miniproject/Hiddink_check/assets/82189651/92a58676-638d-42f3-8dd7-4012c4cb7d45)
+![image,style="width:100px; height:100px;"](https://github.com/oss2023miniproject/Hiddink_check/assets/82189651/92a58676-638d-42f3-8dd7-4012c4cb7d45,)
+![E416BF70-4743-4AA8-92C7-2EC39FCC65C1_4_5005_c](https://github.com/oss2023miniproject/Hiddink_check/assets/82189651/c3e689be-7a55-44e1-a37b-3fc8408e60a0)
 
 
  - 공동 개발자
