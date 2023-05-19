@@ -100,6 +100,9 @@ int main(void){
         else if(menu == 15){//상대방 파일 저장하기 
             saveSearchTeam(q,selectnumber,q_index);
         }
+        else if(menu == 16){
+            automatchingSystem(q,a, q_index,selectnumber);
+        }
     }
     printf("종료됨!\n");
     return 0;
