@@ -21,7 +21,7 @@ int selectMenu(){
     printf("3. 인원 찾기 옵션 : 5. 자신이 인원 예약 업로드하기\n");//업로드라고 작성한 이유는 파일이 저장되어야 다른 인원도 확인할 수 있기 때문이다.
     printf("3. 인원 찾기 옵션 : 6. 인원의 이름 검색\n");
 
-    printf("4. 다른 팀 찾기옵션 \n");
+    printf("다른 팀 찾기옵션 \n");
     printf("1. 자신의 팀 추가하기\n");
     printf("2. 자신의 팀 정보 수정하기\n");
     printf("3. 자신의 팀 삭제하기\n");
@@ -184,6 +184,7 @@ void saveTeamReserve(Team **t,int selectnumber){
     fclose(tp);
     printf("=> 저장됨! ");
 }
+
 void loadTeamReserve(Team **s, int selectnumber){
     FILE *tp;
     int index;
@@ -407,7 +408,7 @@ void updateInformation(Search **q,int studentnumber){
 
     printf("\n1. 전화번호\n2. 팀의정보\n3. 둘다\n\n 무엇을 고칠까요? : ");
     scanf("%d",&point);
-
+    if(q[index-1]->start == -1) index = index+1;
     switch(point){
         case 1:
             inputPhonenumber(q,index-1);
@@ -430,13 +431,15 @@ void deleteInformation(Search **q,int studentnumber,int dex){
     int index;
     printf("삭제할 번호를 적어주세요(취소는 0) : ");
     scanf("%d",&index);
-    if(index == 0 ) return;
+    if(index == 0) return;
     
+    if(q[index]->start == -1) printf("없는 번호입니다.");
     if(checkid(q[index-1]->student,studentnumber) == 1){
         printf("사용자가 다릅니다.\n\n");
         return;
     }
-   
+    q[index-1]->start = -1;
+    q[index-1]->student = -1;
     printf("삭제했습니다.");
 }
 
@@ -496,3 +499,78 @@ int loadSearchTeam(Search **s, int selectnumber){
     }
     return index;
 }
+
+void deleteInformation2(Search **q,int index){
+    q[index]->start = -1;
+    q[index]->student = -1;
+}
+
+void automatchingSystem(Search **q,Team ** t,int index,int selectnumber){//상대방 팀 자동 선택 매칭 시스템
+    int start;
+    int end;
+    int count =0;
+    int number;
+    char reservename[30];
+    char reserveteam[100];
+    int a[index];
+
+    do{//이용 시간 작성하기.
+        printf("가능한 시간을 적어주세요\n(ex: 17시부터 20시 ->17 20) : ");
+        scanf("%d~%d", &start, &end);
+        if(((0<=start)&&(start<=24)) && ((0<=end)&&(end<=24))) break;
+        else printf("시간을 잘못입력했습니다.\n\n");
+    }while(1);
+    getchar();
+    printf("예약자 이름을 입력하세요 : ");
+    scanf("%s",reservename);
+    printf("예약할 팀 이름을 입력하세요 : ");
+    getchar();
+    scanf("%[^\n]s",reserveteam);
+
+
+    printf("자동 선택 매칭 시스템을 시작하겠습니다.\n\n...띠링! 동시간대에 경기가 가능한 팀을 출력합니다.\n\n");
+    for(int i=0; i<index; i++){
+        if((start == q[i]->start) && (0<= q[i]->start && q[i]->start <=24)){
+            printf("%d. ",count+1);
+            printea(q[i]);
+            a[count++] = i;
+        }
+    }
+
+    if(count == 0){
+        printf("가능한 팀이 없네요...");
+        return;
+    }
+    getchar();
+    printf("몇번을 선택하시겠습니까?(취소 : 0) : ");
+    scanf("%d",&number);
+    if(number == 0) return;
+
+    
+    for(int i=0; i<24; i++){
+        if(t[i]->starttime == start){
+            printf("이미 그 시간에는 예약이 되어있습니다.\n자동 매칭 선택시스템을 취소합니다.\n");
+            return;
+        }
+        else if(!strcmp(t[i]->name,reservename)){
+            printf("예약자는 이미 빌렸습니다.\n자동 매칭 선택시스템을 취소합니다.\n");
+            return;
+        }
+        else if(!strcmp(t[i]->teamname,reserveteam)){
+            printf("이 팀은 이미 빌렸습니다.\n자동 매칭 선택시스템을 취소합니다.\n");
+            return;
+        }
+    }
+
+    t[start]->starttime = start;
+    t[start]->endtime = end;
+    strcpy(t[start]->name,reservename);
+    strcpy(t[start]->teamname,reserveteam);
+    printf("팀 예약이 완료되었습니다.\n\n");
+    printf("%s로 상대팀에게 예약이 완료되었다고 말해주세요!\n\n",q[a[number-1]]->phonenumber);
+
+    deleteInformation2(q,a[number-1]);
+    saveTeamReserve(t,selectnumber);
+    saveSearchTeam(q,selectnumber,index);
+}
+
