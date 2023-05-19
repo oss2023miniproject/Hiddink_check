@@ -47,8 +47,10 @@
 ## 팀소개 및 팀원이 맡은 역할
 
 # 팀원
-
 김영규
+![image](https://github.com/oss2023miniproject/Hiddink_check/assets/82189651/92a58676-638d-42f3-8dd7-4012c4cb7d45)
+
+
  - 공동 개발자
  - CRUD 구현
  - README FILE 구현
