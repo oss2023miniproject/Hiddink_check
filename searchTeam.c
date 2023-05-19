@@ -113,3 +113,22 @@ void deleteInformation(Search **q,int studentnumber){
     q[index]->start = -1;
     printf("삭제했습니다.");
 }
+
+void printea(Search *q){
+    printf("%d~%d시 | %s팀 | 조건: %s | 전화번호=> %d\n",q->start,q->end,q->teamname,q->detail,q->phonenumber);
+}
+
+void pritnInformation(Search **q,int index){
+    int count =0;
+    int number =1;
+    printf("상대방 찾기 옵션!!\n--------------------------------------------------");
+    for(int i=0; i<index; i++){
+        if(q[i]->start != -1){
+            printf("%d. |",number++);
+            printea(q[i]);
+            count++;
+        }
+    }
+
+    if(count == 0) printf("\n\n\n\t\t사람들이 없네요...\n\n\n");
+}
