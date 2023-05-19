@@ -316,6 +316,7 @@ int selectMenu(){
     printf("7. 현재 경기장 예약 현황 조회\n");
     printf("8. 팀으로 예약하기\n");
     printf("9. 팀 예약취소하기\n");
+    printf("10. 로그아웃\n");
     printf("0. 종료\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
