@@ -21,7 +21,7 @@ int selectMenu(){
 
 int selectMenu2(){
     int menu;
-    printf("-----경기장 예약관련-----\n");
+    printf("\n-----경기장 예약관련-----\n");
     printf("1. 예약 현황 보기\n");
     printf("2. 경기장 예약\n");
     printf("3. 팀 예약취소\n");
@@ -75,8 +75,7 @@ int logout(){  //세분화 여기에 왜 이게 있는지 물어보기
 int loadData(Person **s, int selectnumber){
     int count =0;
     FILE *fp;
-    if(selectnumber == 1) fp=fopen("poengbong.txt", "rt");
-    else fp = fopen("hidink.txt","rt");
+    fp=fopen("allcheck.txt", "rt");
     if(fp==NULL){
         printf("=> 파일 없음");
     }
@@ -115,6 +114,10 @@ int createProduct(Person *s, int studentnumber){
     
     return 0;
 };
+void deleteproduct(Person *s, int studentnumber){
+    s->countnumber=-1;
+};
+
 void readProduct(Person *s){
     printf(" %10s  %d명   %s ",s->teamname,s->countnumber,s->name);
     if(s->playground==1){
@@ -169,26 +172,21 @@ int selectdatano3 (Search *q[], int count){
 
 
 //-------------------------------------------------------------------------------
-void saveData(Person **s, int count,int selectnumber){
+void saveData(Person **s, int count){
     FILE *fp;
-    if(selectnumber == 1) fp = fopen("poengbong.txt", "wt");
-    else fp = fopen("hidink.txt","rt");
+    fp = fopen("allcheck.txt", "wt");
     for(int i=0; i<count; i++){
         if(s[i]->countnumber==-1) continue;
     fprintf(fp, "%s %d %d %s \n",s[i]->name,s[i]->countnumber,s[i]->studentnumber,s[i]->teamname);
     }
     fclose(fp);
-    printf("=> 저장됨! ");
+    printf("=> 저장됨! \n");
 };
 
 
 int updateProduct(Person *s, int studentnumber){
     printf("어느 경기장을 대여하시겠습니까?(평봉:0 히딩크:1 )");
     scanf("%d",&s->playground);
-    if(s->playground !=1||s->playground !=0){
-        printf("다시 입력하세요");
-        scanf("%d",&s->playground);
-    }
     printf("팀이름은 ? ");
     getchar();
     scanf("%[^\n]s", s->teamname);
