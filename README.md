@@ -24,6 +24,9 @@
 - 한동대 풋살과 축구장 대여를 기반으로 하는 프로그램입니다. 
 - 한동대학교 학생들만 히딩크 혹은 평봉필드를 예약하는 것이 가능합니다.
 - 기초적인 축구 인원모집, 팀 배틀등 다양한 시스템을 사용할 수 있습니다. 
+- 자동으로 부족한 팀과 매칭을 할 수 있고 무작위팀과 만날 수 있게 설계되었습니다. 
+
+
 --------------------------
 
 
@@ -112,16 +115,18 @@ void deleteInformation2(Search **q,int index);//데이터를 지우는 함수입
 
 ## ⚽️김영규 [yongkyu Kim GITHUB LINK](https://github.com/kimbbanggyu)
 - 공동 개발자
+- 자동화 시스템구현
+- 
 - CRUD 구현
-- README FILE 구현
 - 코드 관리
 
 ## ⚽️김태민 [Taemin Kim GITHUB LINK](https://github.com/taeminkim-408)
 - 공동 개발자
-- 예약 시스템 코드 구현
+- 메뉴시스템 구현
+- login&logout 구현
 - 코드 관리
 - Repo Owner
-- 
+- Rename.md, Wiki관리
   
 
 
