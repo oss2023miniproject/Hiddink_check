@@ -53,7 +53,7 @@ style="width:100px; height:100px;"
 
 <div style="display: flex; justify-content: center;">
   <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
-    <img src="./assets/taemin.png" width="300" height="400">
+    <img src="./assets/bok.png" width="500" height="400">
     <h3>김영규</h3>
     <p>- 공동 개발자</p>
     <p>- CRUD 구현</p>
@@ -61,7 +61,7 @@ style="width:100px; height:100px;"
     <p>- 코드 관리</p>
   </div>
   <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="./assets/bok.png" width="300" height="400">
+    <img src="./assets/taemin.png" width="500" height="400">
     <h3>김태민</h3>
     <p>- 공동 개발자</p>
     <p>- 예약 시스템 코드 구현</p>
