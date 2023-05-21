@@ -53,7 +53,8 @@ style="width:100px; height:100px;"
 
 # 팀원
 김영규
-(./assets/taemin.jpg)
+(./assets/taemin.png)
+(./assets/bok.png)
 
  - 공동 개발자
  - CRUD 구현
