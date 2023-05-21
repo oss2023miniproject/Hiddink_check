@@ -1,5 +1,5 @@
 ##### ⚽️히딩크 및 평봉필드 예약 시스템
-<img src="./assets/taemin.png" width="700" height="550">
+<img src="./assets/football.png" width="700" height="350">
 
 
 
