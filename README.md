@@ -52,29 +52,24 @@ style="width:100px; height:100px;"
 <h2>팀소개 및 팀원이 맡은 역할</h2>
 
 <div style="display: flex; justify-content: center;">
-  <div style="margin-right: 20px;">
-    <img src="./assets/taemin.png" width="450" height="300">
+  <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
+    <img src="./assets/taemin.png" width="300" height="400">
+    <h3>김영규</h3>
+    <p>- 공동 개발자</p>
+    <p>- CRUD 구현</p>
+    <p>- README FILE 구현</p>
+    <p>- 코드 관리</p>
   </div>
-  <div>
-    <img src="./assets/bok.png" width="450" height="300">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="./assets/bok.png" width="300" height="400">
+    <h3>김태민</h3>
+    <p>- 공동 개발자</p>
+    <p>- 예약 시스템 코드 구현</p>
+    <p>- 코드 관리</p>
+    <p>- Repo Owner</p>
   </div>
 </div>
 
-<div style="text-align: center;">
-  <h3>김영규</h3>
-  <p>- 공동 개발자</p>
-  <p>- CRUD 구현</p>
-  <p>- README FILE 구현</p>
-  <p>- 코드 관리</p>
-</div>
-
-<div style="text-align: center;">
-  <h3>김태민</h3>
-  <p>- 공동 개발자</p>
-  <p>- 예약 시스템 코드 구현</p>
-  <p>- 코드 관리</p>
-  <p>- Repo Owner</p>
-</div>
 
 
 
