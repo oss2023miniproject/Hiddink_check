@@ -52,18 +52,15 @@ style="width:100px; height:100px;"
 ## 팀소개 및 팀원이 맡은 역할
 
 # 팀원
-김영규
-<img src="./assets/taemin.png" width="300" height="200">
-<img src="./assets/bok.png" width="300" height="200">
+
+<img src="./assets/taemin.png" width="500" height="300">
+<img src="./assets/bok.png" width="500" height="300">
+
+                     김영규                        |                         김태민
+ - 공동 개발자                                                       - 공동 개발자
+ - CRUD 구현                                                       - 코드 관리
+ - README FILE 구현                                                - 예약 시스템 코드 구현
+ - 코드 관리                                                        - Repo Owner
 
 
- - 공동 개발자
- - CRUD 구현
- - README FILE 구현
- - 코드 관리
 
-김태민
- - 공동 개발자
- - 코드 관리
- - 예약 시스템 코드 구현
- - Repo Owner
