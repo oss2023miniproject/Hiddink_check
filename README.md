@@ -44,7 +44,7 @@
 <img src="./assets/taemin.png" width="400" height="300">
 </div>
 
-## ⚽️김영규 [yongkyu Kim GITHUB LINK]([https://github.com/isaccKim](https://github.com/taeminkim-408)
+## ⚽️김영규 [yongkyu Kim GITHUB LINK](https://github.com/kimbbanggyu)
 - 공동 개발자
 - CRUD 구현
 - README FILE 구현
@@ -55,6 +55,7 @@
 - 예약 시스템 코드 구현
 - 코드 관리
 - Repo Owner
+- 
   
 
 
