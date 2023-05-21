@@ -42,22 +42,20 @@
 <div align="center">
 <img src="./assets/bok.png" width="400" height="300"> |
 <img src="./assets/taemin.png" width="400" height="300">
-  </div>
-
-    <h2>⚽️김영규</h2>
-    <p>- 공동 개발자</p>
-    <p>- CRUD 구현</p>
-    <p>- README FILE 구현</p>
-    <p>- 코드 관리</p>
-
-    <h2>⚽️김태민</h2>[isaccKim GITHUB LINK]([https://github.com/isaccKim](https://github.com/taeminkim-408))
-    <p>- 공동 개발자</p>
-    <p>- 예약 시스템 코드 구현</p>
-    <p>- 코드 관리</p>
-    <p>- Repo Owner</p>
-  </div>
 </div>
 
+## ⚽️김영규 [yongkyu Kim GITHUB LINK]([https://github.com/isaccKim](https://github.com/taeminkim-408))
+- 공동 개발자
+- CRUD 구현
+- README FILE 구현
+- 코드 관리
+
+## ⚽️김태민 [Taemin Kim GITHUB LINK]([https://github.com/isaccKim](https://github.com/taeminkim-408))
+- 공동 개발자
+- 예약 시스템 코드 구현
+- 코드 관리
+- Repo Owner
+  
 
 
 
