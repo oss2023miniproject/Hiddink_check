@@ -71,17 +71,6 @@ int logout(){  //세분화 여기에 왜 이게 있는지 물어보기
 //---------------------------------------------------------
 //인원을 조사를 위해서 필요한 함수들이다.
 
-void saveData(Person **s, int count,int selectnumber){
-    FILE *fp;
-    if(selectnumber == 1) fp = fopen("poengbong.txt", "wt");
-    else fp = fopen("hidink.txt","rt");
-    for(int i=0; i<count; i++){
-        if(s[i]->countnumber==-1) continue;
-    fprintf(fp, "%s %d %d %s \n",s[i]->name,s[i]->countnumber,s[i]->studentnumber,s[i]->teamname);
-    }
-    fclose(fp);
-    printf("=> 저장됨! ");
-};
 
 int loadData(Person **s, int selectnumber){
     int count =0;
@@ -151,28 +140,6 @@ void listproduct(Person *s[], int count){
     printf("\n");
 };
 
-int updateProduct(Person *s, int studentnumber){
-    printf("어느 경기장을 대여하시겠습니까?(평봉:0 히딩크:1 )");
-    scanf("%d",&s->playground);
-    if(s->playground !=1||s->playground !=0){
-        printf("다시 입력하세요");
-        scanf("%d",&s->playground);
-    }
-    printf("팀이름은 ? ");
-    getchar();
-    scanf("%[^\n]s", s->teamname);
-
-    printf("팀 인원은? ");
-    scanf("%d",&s->countnumber);
-
-    printf("대표자 성함은? ");
-    getchar();
-    scanf("%[^\n]s", s->name);
-    printf("=> 추가됨! \n");
-    s->studentnumber = studentnumber;
-    printf("=> 수정되었습니다.! \n");
-    return 0;
-};
 
 int selectdatano (Person *s[], int count){
     int no;
@@ -198,41 +165,6 @@ int selectdatano3 (Search *q[], int count){
     return no;
 };
 
-
-
-void searchName(Person **s, int count){
-    int scnt =0;
-    char search[20];
-    printf("검색할 이름은? ");
-    scanf("%s", search);
-    printf("--현재 상황-- \n");
-    printf("================================\n");
-    for(int i=0;i<count;i++){
-        if(s[i]->countnumber==-1) continue;
-        if(strstr(s[i]->name,search)){
-            printf("%2d ", i+1);
-            readProduct(s[i]);
-            scnt++;
-        }
-    }
-    if(scnt == 0) printf("=> 검색된데이터없음!");
-    printf("\n");
-};
-int idcheck(){
-    int input;
-
-    while(1){
-        printf("\n당신의 학번을 입력해주세요: ");
-        scanf("%d",&input);
-        if(input >= 11111111 && input <= 24000000){
-            break;
-        }
-        else{
-            printf("학번이 맞지 않습니다. 다시 입력하시길 바랍니다.\n ");
-    }
-}
-    return input;
-}
 
 
 
@@ -249,67 +181,6 @@ void saveData(Person **s, int count,int selectnumber){
     printf("=> 저장됨! ");
 };
 
-int loadData(Person **s, int selectnumber){
-    int count =0;
-    FILE *fp;
-    if(selectnumber == 1) fp=fopen("poengbong.txt", "rt");
-    else fp = fopen("hidink.txt","rt");
-    if(fp==NULL){
-        printf("=> 파일 없음");
-    }
-    else{
-        while(!feof(fp)){
-        s[count]=(Person *)malloc(sizeof(Person));
-        fscanf(fp, "%s", s[count]->name);
-        if(feof(fp)) break;
-        fscanf(fp, "%d", &s[count]->countnumber);
-        fscanf(fp, "%d", &s[count]->studentnumber);
-        fscanf(fp, "%[^\n]s", s[count]->teamname);
-        count++;
-    }
-    fclose(fp);
-    printf("=> 로딩성공!\n");
-    }
-    
-    return count;
-};
-
-int createProduct(Person *s, int studentnumber){
-    printf("어느 경기장을 대여하시겠습니까?(평봉:0 히딩크:1) :");
-    scanf("%d",&s->playground);
-    if(s->playground !=1||s->playground !=0){
-        printf("다시 입력하세요");
-        scanf("%d",&s->playground);
-    }
-    printf("팀이름은 ? ");
-    getchar();
-    scanf("%[^\n]s", s->teamname);
-
-    printf("팀 인원은? ");
-    scanf("%d",&s->countnumber);
-
-    printf("대표자 성함은? ");
-    getchar();
-    scanf("%[^\n]s", s->name);
-    printf("=> 추가됨! \n");
-    s->studentnumber = studentnumber;
-    
-    return 0;
-};
-void readProduct(Person *s){
-    printf("대표자: %10s  인원: %d명 팀대표: %s \n",s->teamname,s->countnumber,s->name);
-};
-
-void listproduct(Person *s[], int count){
-    printf("---------Check the Playground------------\n");    //수정하자
-    printf("===========================\n");
-    for(int i=0; i<count; i++){
-        if(s[i]->countnumber ==-1) continue;
-        printf("대표자   |  인원  | 팀대표 \n");
-        readProduct(s[i]);
-    }
-    printf("\n");
-};
 
 int updateProduct(Person *s, int studentnumber){
     printf("어느 경기장을 대여하시겠습니까?(평봉:0 히딩크:1 )");
@@ -333,32 +204,6 @@ int updateProduct(Person *s, int studentnumber){
     printf("=> 수정되었습니다.! \n");
     return 0;
 };
-
-int selectdatano (Person *s[], int count){
-    int no;
-    listproduct(s, count);
-    printf("번호는? (취소 :0)?");
-    scanf("%d", &no);
-    return no;
-};
-
-int selectdatano2 (Team *a[], int count){
-    int no;
-    
-    printf("번호는? (취소 :0)?");
-    scanf("%d", &no);
-    return no;
-};
-
-int selectdatano3 (Search *q[], int count){
-    int no;
-    
-    printf("번호는? (취소 :0)?");
-    scanf("%d", &no);
-    return no;
-};
-
-
 
 void searchName(Person **s, int count){
     int scnt =0;
