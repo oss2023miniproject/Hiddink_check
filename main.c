@@ -46,7 +46,7 @@ int main(void) {
         s[index1]=(Person *)malloc(sizeof(Person));
         count += createProduct(s[index1++],id);
       }
-      else if(selectnumber == 3){
+      else if(selectnumber == 4){
         int no = selectdatano(s,index1);
             if(no==0){
                 printf("=> 취소됨!\n");
@@ -54,7 +54,7 @@ int main(void) {
             }
             updateProduct(s[no-1],id);
       }
-      else if(selectnumber == 4){
+      else if(selectnumber == 3){
        int no = selectdatano(s,index1);
             if(no==0){
                 printf("=> 취소됨!\n");
@@ -64,10 +64,16 @@ int main(void) {
             printf("정말로 삭제하시겠습까?(삭제 :1)");
             scanf("%d",&deletok);
             if(deletok ==1){
+              deleteproduct(s[no-1],id);
+              printf("=>삭제됨 \n");
             }
 
       }
       else if(selectnumber == 5){
+        saveData(s,index1);
+      }
+
+      else if(selectnumber == 6){
         searchName(s,index1);
       }
       else break;
