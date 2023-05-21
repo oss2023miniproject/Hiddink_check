@@ -1,4 +1,4 @@
-<h2 style="text-align: center;">⚽️히딩크 및 평봉필드 예약 시스템</h2>
+<h1 style="text-align: center;">⚽️히딩크 및 평봉필드 예약 시스템</h1>
 
 <div style="display: flex; justify-content: center;">
   <img src="./assets/football.png" width="700" height="350">
