@@ -1,6 +1,7 @@
 <p style="text-align: center; margin-top: 20px;">
+    </p>
   ## ⚽️⚽️히딩크 및 평봉필드 예약 시스템⚽️⚽️
-  </p>
+
 
 <div align="center">
 <div style="display: flex; justify-content: center;">
