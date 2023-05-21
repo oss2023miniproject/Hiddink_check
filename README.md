@@ -1,18 +1,13 @@
-## ⚽️히딩크 및 평봉필드 예약 시스템
-<img src="./assets/football.png" width="700" height="350">
+<h2 style="text-align: center;">⚽️히딩크 및 평봉필드 예약 시스템</h2>
 
+<div style="display: flex; justify-content: center;">
+  <img src="./assets/football.png" width="700" height="350">
+</div>
 
+<p style="text-align: center; margin-top: 20px;">
+  주제: 한동대학생들이 히딩크 풋살장과 평봉필드를 편하게 이용할 수 있도록 예약하는 C 언어 기반 프로그램입니다.
+</p>
 
-
-
------------------------
- 
-
-
-
-##### ⚽️주제 
-- 한동대학생들이 히딩크 풋살장과 평봉필드를 편하게 이용할 수 있도록 예약하는 C 언어 기반 프로그램입니다.
--------------------------
 
 
 ## 히딩크 및 평봉필드 예약 시스템 소개 
