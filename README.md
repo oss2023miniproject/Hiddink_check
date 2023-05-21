@@ -53,8 +53,8 @@ style="width:100px; height:100px;"
 
 # 팀원
 
-<img src="./assets/taemin.png" width="500" height="300">
-<img src="./assets/bok.png" width="500" height="300">
+<img src="./assets/taemin.png" width="450" height="300">
+<img src="./assets/bok.png" width="450" height="300">
 
                      김영규                        |                         김태민
  - 공동 개발자                                                       - 공동 개발자
