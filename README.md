@@ -9,6 +9,15 @@
 </div>
 </p>
 
+### ⚽️⚽️개발환경 및 언어⚽️⚽️
+<div align="center">
+ <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
+ <img src="https://img.shields.io/badge/C-00CCFF?style=flat-square&logo=C&logoColor="white"/>
+ <img src="https://img.shields.io/badge/VisualStudioCode-0000FF?style=flat-square&logo=VisualStudioCode&logoColor="black"/>
+                                                                                                            
+
+</div>
+--------------------------
 
 
 ## ⚽️⚽️히딩크 및 평봉필드 예약 시스템 소개⚽️⚽️
@@ -27,15 +36,6 @@
 
 
 
-### ⚽️⚽️개발환경 및 언어⚽️⚽️
-<div align="center">
- <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
- <img src="https://img.shields.io/badge/C-00CCFF?style=flat-square&logo=C&logoColor="white"/>
- <img src="https://img.shields.io/badge/VisualStudioCode-0000FF?style=flat-square&logo=VisualStudioCode&logoColor="black"/>
-                                                                                                            
-
-</div>
---------------------------
 
 
 
