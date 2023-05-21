@@ -42,9 +42,9 @@ int selectdatano (Person *s[], int count);  //정말 맞는지 확인하는 함�
 int detectTeam(Team *a[],char y[]);  //삭제하는 함수입니다. 
 int deleteproduct(Person *s, int studentnumber);  //삭제하는 함수입니다. 
 void searchName(Person **s, int count);  //이름을 통해서 경기장을 검색하는 함수입니다. 
-
-
+int checkid(int studentnumber,int checknumber);//예약,취소,변경을 할 때 학번이 같은지 확인하는 함수이다.
 int logout();//학번을 다시 입력 받도록하는 함수이다. =>학번을 다시 입력 받아서 로그아웃 상태로 만드는 것.
+
 int reserveTime(Team *t[]);//경기장을 예약하는데 시작 시간과 끝나는 시간을 받는 함수이다.
 void reserveteamName(Team *t[],int time);//경기장 예약에서 팀의 이름과 대표자의 이름을 받는 함수이다.
 void reserveSystem(Team **t,int id);//경기장 예약 함수이다. =>reserveTime과 reserveteamName을 호출한다.
@@ -55,12 +55,11 @@ void deleteTeam(Team **t,char a[],int id);//예약한 팀을 삭제하는 함수
 void updateTeam(Team **q,int studentnumber);
 void saveTeamReserve(Team **t,int selectnumber);//경기장 예약 내용을 파일에 저장하는 함수이다.
 void loadTeamReserve(Team **s, int selectnumber);//경기장 예약 내용의 파일을 읽어오는 함수이다.
-int selectdatano2 (Team *a[], int count);//각 함수마다 출력되는 함수를 표현합니다. 
+int selectdatano2 (Team *a[], int count);
 
 
 
-int selectdatano3 (Search *q[], int count); //각 함수마다 출력되는 함수를 표현합니다. 
-int checkid(int studentnumber,int checknumber);//예약,취소,변경을 할 때 학번이 같은지 확인하는 함수이다.
+int selectdatano3 (Search *q[], int count);
 void inputPhonenumber(Search **q,int index);//상대방 팀 찾기 옵션에서 자신의 팀을 예약할 때 대표자의 전화번호를 입력받는 함수이다.
 void inputInformation(Search **q,int index);//상대방 팀 찾기 옵션에서 자신의 팀을 예약할 때 팀의 이름, 세부사항을 입력받는 함수이다.
 int inputSearchInformation(Search **q,int index,int studentnumber);//상대방 팀 찾기 옵션에서 자신의 팀을 예약하는 함수이다.
