@@ -115,7 +115,6 @@ void deleteInformation2(Search **q,int index);//데이터를 지우는 함수입
 ## ⚽️김영규 [yongkyu Kim GITHUB LINK](https://github.com/kimbbanggyu)
 - 공동 개발자
 - 자동화 시스템구현
-- 
 - CRUD 구현
 - 코드 관리
 
