@@ -54,6 +54,7 @@ style="width:100px; height:100px;"
 # 팀원
 김영규
 <img src=(assets/taemin.jpg"></p>
+   !(./assets/taemin.jpg)
 
 | ![]([E416BF70-4743-4AA8-92C7-2EC39FCC65C1_4_5005_c,image) | ![](https://github.com/kimjueun1.png) | ![](https://github.com/Vinodi-skLee.png) |
 !style="width:50px; height:50px;"](https://github.com/oss2023miniproject/Hiddink_check/assets/82189651/c3e689be-7a55-44e1-a37b-3fc8408e60a0)
