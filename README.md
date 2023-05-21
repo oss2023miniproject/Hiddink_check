@@ -3,7 +3,7 @@
   ## ⚽️⚽️히딩크 및 평봉필드 예약 시스템⚽️⚽️
 
 
-<div align="center">
+
 <div style="display: flex; justify-content: center;">
   <img src="./assets/football.png" width="700" height="350">
 </div>
