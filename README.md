@@ -119,7 +119,7 @@ void deleteInformation2(Search **q,int index);//데이터를 지우는 함수입
 - 코드 관리
 
 ## ⚽️김태민 [Taemin Kim GITHUB LINK](https://github.com/taeminkim-408)
-- 공동 개발자
+- 공동 개발자  
 - 메뉴시스템 구현
 - login&logout 구현
 - 코드 관리
