@@ -33,14 +33,14 @@ int idcheck();//학번
 
 
 int loadData(Person * *s,int selectnumber); //저장된 파일을 가지고 오는 함수입니다. 
-void saveData(Person **s, int count,int selectnumber); //파일을 저장하는 함수입니다. 
+void saveData(Person **s, int count); //파일을 저장하는 함수입니다. 
 int createProduct(Person *s, int studentnumber);  //새로운 product를 만드는 함수입니다. 
 void readproduct(Person *s);    //파일을 한줄 출력하는 함수입니다. 
 void listproduct(Person *s[], int count);  //파일을 List로 출력하는 함수입니다. 
 int updateProduct(Person *s, int studentnumber); //입력된 값을 수정하는 함수입니다. 
 int selectdatano (Person *s[], int count);  //정말 맞는지 확인하는 함수입니다. 
 int detectTeam(Team *a[],char y[]);  //삭제하는 함수입니다. 
-int deleteproduct(Person *s, int studentnumber);  //삭제하는 함수입니다. 
+void deleteproduct(Person *s, int studentnumber);  //삭제하는 함수입니다. 
 void searchName(Person **s, int count);  //이름을 통해서 경기장을 검색하는 함수입니다. 
 int checkid(int studentnumber,int checknumber);//예약,취소,변경을 할 때 학번이 같은지 확인하는 함수이다.
 int logout();//학번을 다시 입력 받도록하는 함수이다. =>학번을 다시 입력 받아서 로그아웃 상태로 만드는 것.
